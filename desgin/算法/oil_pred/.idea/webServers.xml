@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="83832b60-fea2-4bfa-a88a-6fd8583fea92" name="636g88n508.imdo.co">
+        <fileTransfer rootFolder="/home/cx" accessType="SFTP" host="192.168.23.205" port="2022" sshConfigId="93cc6635-b405-4e00-b771-dab9d4612b76" sshConfig="cx@192.168.23.205:2022 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="3f9364ef-5c11-47a6-9bdf-8e62c51cd53c" name="192.168.23.205:2022">
+        <fileTransfer accessType="SFTP" host="10.181.108.18" port="20208" sshConfigId="7352ef98-911b-4438-a4f8-aa427ff63999" sshConfig="root@10.181.108.18:20208 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,16 @@
+{
+    "clickhouse": {
+        "host": "47.98.47.251",
+        "port": 9000,
+        "user": "default",
+        "password": "123456",
+        "database": "oildb",
+        "table": "tboxdata"
+    },
+    "postgres": {
+        "host": "47.98.47.251",
+        "port": 5432,
+        "user": "postgres",
+        "password": "jinzewei"
+    }
+}
