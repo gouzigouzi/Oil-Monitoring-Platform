@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oil.mapper.postgres.OilLifeMapper">
+    <select id="getOilLifeMap" resultType="java.util.HashMap">
+        SELECT subquery.device_no, subquery.oil_life_time_percent
+        FROM (
+            SELECT
+            *,
+            ROW_NUMBER() OVER (PARTITION BY device_no ORDER BY datetime DESC) AS rn
+            FROM loader.loader_oil_life_tb
+            WHERE device_no IN
+            <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            ) AS subquery
+        WHERE rn = 1
+    </select>
+
+</mapper>

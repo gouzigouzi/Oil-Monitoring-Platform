@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - "./frontend/dist:/usr/share/nginx/html"
+      - "./frontend/nginx.conf:/etc/nginx/nginx.conf"
+    ports:
+      - "80:80"
+    depends_on:
+      - oil-template
+    networks:
+      - app-network
+
+  # 后端服务
+  oil-template:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: oil-template
+    ports:
+      - "8999:8999"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - app-network
+
+  # 算法模块服务
+  algorithm:
+    build:
+      context: ./algorithm
+      dockerfile: Dockerfile
+    container_name: algorithm
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  # PostgreSQL 数据库服务
+  postgres:
+    image: postgres:13.14-bullseye
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: jinzewei
+      LANG: C.UTF-8
+    volumes:
+      - "./postgres/data:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  # Redis 服务
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./redis/data:/data"
+      - "./redis/conf/redis.conf:/etc/redis/redis.conf"
+    command: redis-server /etc/redis/redis.conf
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    name: oil-network

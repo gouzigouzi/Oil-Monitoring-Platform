@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oil.mapper.postgres.TodoMapper">
+    <update id="deleteByTodoIdList">
+        UPDATE loader.todo_tb SET is_deleted = 1 where id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>;
+    </update>
+
+    <update id="agreeByTodoIdList">
+        UPDATE loader.todo_tb SET todo_status = 1 where id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>;
+    </update>
+
+    <update id="reject">
+        UPDATE loader.todo_tb SET todo_status = 2, reject_reason = #{rejectReason} where id in
+        <foreach item="item" index="index" collection="rejectIdList" open="(" separator="," close=")">
+            #{item}
+        </foreach>;
+    </update>
+
+</mapper>

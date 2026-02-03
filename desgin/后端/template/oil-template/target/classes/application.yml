@@ -1,0 +1,50 @@
+server:
+  port: 8999
+
+spring:
+  application:
+    name: oil-template
+  profiles:
+    active: prod
+  datasource:
+    postgres:
+      driver-class-name: org.postgresql.Driver
+      jdbcUrl: jdbc:postgresql://${oil.postgres.host}:${oil.postgres.port}/postgres?currentSchema=${oil.postgres.schema}
+      username: ${oil.postgres.user}
+      password: ${oil.postgres.password}
+    clickhouse:
+      driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+      jdbcUrl: jdbc:clickhouse://${oil.clickhouse.host}:${oil.clickhouse.port}/${oil.clickhouse.database}
+      username: ${oil.clickhouse.user}
+      password: ${oil.clickhouse.password}
+  data:
+    redis:
+      host: ${oil.redis.host}
+      port: ${oil.redis.port}
+      password: ${oil.redis.password}
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+      database: ${oil.redis.database}
+
+oil:
+  jwt:
+    user-secret-key: oil
+    user-ttl: 7200000
+    user-token-name: token
+
+python:
+  host: ${oil.algorithm.host}
+  port: ${oil.algorithm.port}
+
+mybatis-plus:
+  mapper-locations: classpath:/com/oil/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.oil: info

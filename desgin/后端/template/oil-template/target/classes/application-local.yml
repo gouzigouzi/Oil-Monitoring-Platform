@@ -1,0 +1,23 @@
+oil:
+  postgres:
+    host: postgres
+    port: 5432
+    user: postgres
+    password: jinzewei
+    schema: loader
+  clickhouse:
+    host: 47.98.47.251
+    port: 8123
+    user: default
+    password: 123456
+    database: oildb
+  redis:
+    host: redis
+    port: 6379
+    password: 123456
+    database: 3
+  algorithm:
+    host: algorithm
+    port: 5000
+  log:
+    level: info
