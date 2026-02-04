@@ -1,1 +1,0 @@
-- 使用IDEA IDE进行开发，基于Java语言和SprngBoot框架开发，输入数据库为Clickhouse，输出数据库为Postgresql。
