@@ -2,7 +2,6 @@
 
 <img src="https://img.shields.io/badge/Vue-10B981?style=for-the-badge&logo=vuedotjs&logoColor=white" />
 <img src="https://img.shields.io/badge/Python-1D4ED8?style=for-the-badge&logo=python&logoColor=white" />
-<img src="https://img.shields.io/badge/Node.js-16A34A?style=for-the-badge&logo=nodedotjs&logoColor=white" />
 <img src="https://img.shields.io/badge/Docker-2563EB?style=for-the-badge&logo=docker&logoColor=white" />
 
 
