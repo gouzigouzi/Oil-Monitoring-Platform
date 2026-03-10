@@ -14,7 +14,7 @@ oil:
   redis:
     host: 47.98.47.251
     port: 6379
-    password: 123456
+    password: Nvr@2025
     database: 3
   algorithm:
     host: 47.98.47.251
